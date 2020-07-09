@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Notes</string>
     <string name="create_note_toast">Creating new note</string>
+    <string name="main_page_title">All Notes</string>
 </resources>
