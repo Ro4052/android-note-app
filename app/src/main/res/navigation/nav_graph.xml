@@ -3,11 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainPageFragment">
+    app:startDestination="@id/MainPageFragment">
 
     <fragment
-        android:id="@+id/mainPageFragment"
+        android:id="@+id/MainPageFragment"
         android:name="com.example.notesapp.MainPageFragment"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" />
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPageFragment_to_notePageFragment"
+            app:destination="@id/NotePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NotePageFragment"
+        android:name="com.example.notesapp.NotePageFragment"
+        android:label="fragment_note_page"
+        tools:layout="@layout/fragment_note_page" >
+        <action
+            android:id="@+id/action_notePageFragment_to_mainPageFragment"
+            app:destination="@id/MainPageFragment" />
+        <argument
+            android:name="noteId"
+            app:argType="android.os.ParcelUuid" />
+    </fragment>
 </navigation>

@@ -13,9 +13,8 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:scrollHorizontally="true"
-        android:text="Title"
         android:textColor="@color/colorHeading"
-        android:textSize="20sp" />
+        android:textSize="@dimen/note_card_title_text_size" />
 
     <TextView
         android:id="@+id/note_description"
@@ -25,7 +24,6 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:scrollHorizontally="true"
-        android:text="Description"
         android:textColor="@color/colorText"
-        android:textSize="18sp" />
+        android:textSize="@dimen/note_card_description_text_size" />
 </LinearLayout>

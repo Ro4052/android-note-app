@@ -1,3 +1,5 @@
 package com.example.notesapp
 
-class Note(val title: String, val description: String) {}
+import android.os.ParcelUuid
+
+class Note(val id: ParcelUuid, val title: String, val description: String) {}

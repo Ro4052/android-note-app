@@ -1,6 +1,7 @@
 package com.example.notesapp
 
 import android.os.Bundle
+import android.os.ParcelUuid
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.note_card_layout.view.*
+import java.util.*
 
 class MainPageFragment : Fragment() {
 
@@ -31,7 +34,8 @@ class MainPageFragment : Fragment() {
     }
 
     private fun setToolbarTitle() {
-        val textView = activity?.findViewById<Toolbar>(R.id.toolbar)?.findViewById<TextView>(R.id.toolbar_title)
+        val toolbarView = activity?.findViewById<Toolbar>(R.id.toolbar)
+        val textView = toolbarView?.findViewById<TextView>(R.id.toolbar_title)
         textView?.text = getString(R.string.main_page_title)
     }
 
@@ -43,9 +47,9 @@ class MainPageFragment : Fragment() {
 
     private fun setupNotesView(view: View) {
         val values = arrayOf(
-            Note("Note 1", "Description 1"),
-            Note("Note 2", "Description 2"),
-            Note("Note 3", "Description 3")
+            Note(ParcelUuid(UUID.randomUUID()),"Note 1", "Description 1"),
+            Note(ParcelUuid(UUID.randomUUID()),"Note 2", "Description 2"),
+            Note(ParcelUuid(UUID.randomUUID()),"Note 3", "Description 3")
         )
 
         val noteListLayoutManager = LinearLayoutManager(activity)
@@ -63,5 +67,11 @@ class MainPageFragment : Fragment() {
         val noteCard = holder.view as LinearLayout
         noteCard.note_title.text = note.title
         noteCard.note_description.text = note.description
+        noteCard.setOnClickListener {
+            val action = MainPageFragmentDirections.actionMainPageFragmentToNotePageFragment(
+                note.id
+            )
+            findNavController().navigate(action)
+        }
     }
 }
