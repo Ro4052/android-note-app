@@ -18,7 +18,7 @@
             android:layout_height="0dp"
             android:background="@null"
             android:gravity="top"
-            android:inputType="textAutoCorrect|textCapSentences"
+            android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
             android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
